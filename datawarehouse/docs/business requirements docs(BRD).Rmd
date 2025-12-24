@@ -1,0 +1,52 @@
+# 📌 Business Requirements Document (BRD)
+## Project: Sales-Intelligence & Customer Analytics Platform
+**Owner:** Swati Lalwani  
+**Objective:** Build a scalable data analytics platform to unify CRM + ERP data, generate customer insights, automate reporting, and support sales decision-making.
+
+---
+
+## 1️⃣ Problem Statement
+The organization lacks a unified reporting system across CRM & ERP. Sales data is fragmented, insights are manual, and leadership cannot understand customer value, product performance, or churn early enough to act.
+
+---
+
+## 2️⃣ Goals & Success Criteria
+| Goal | KPI / Success Metric |
+|------|-----------------------|
+| Unified Sales Warehouse | 100% CRM + ERP integration in Gold layer |
+| Improve Data Quality | Reduce missing/incorrect fields by 90% |
+| Increase Insight Speed | Reduce reporting time from 3 days → 10 minutes |
+| Enable Customer Insights | Identify Top 10% revenue-driving segments |
+| Sales Experimentation | A/B Test outcomes measurable with p-values |
+
+---
+
+## 3️⃣ Scope
+**In-Scope**
+- CRM & ERP data ingestion to Bronze → Silver → Gold layers  
+- Power BI dashboards (Sales, Customers, Retention)  
+- Basic data quality automation (checks in SQL/Python)  
+- Experimentation (A/B Test readouts & insights)
+
+**Out of Scope**
+- Real-time streaming (Kafka)
+- ML model deployment in production
+- Cloud DevOps orchestration
+
+---
+
+## 4️⃣ Data Architecture Summary
+- **Bronze:** Raw CRM & ERP extracts
+- **Silver:** Cleaned + standardized data
+- **Gold:** Star schema + reporting models  
+*(matches architecture from screenshots)*
+
+---
+
+## 5️⃣ KPIs (Final Dashboard Metrics)
+- Total Revenue / AOV
+- Purchase Frequency
+- Customer Lifetime Revenue
+- Churn % / Risk Status %
+- Top Segments by Value
+- A/B Test Conversions & Lift
