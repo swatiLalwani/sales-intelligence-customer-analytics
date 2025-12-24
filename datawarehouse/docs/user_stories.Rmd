@@ -1,0 +1,14 @@
+# 🧩 User Stories (Agile Format)
+
+### 📍 Customer Insights
+- As a Sales Manager, I want to see top customers by revenue so that I can prioritize retention efforts.
+- As a Marketing Lead, I want customer segments so that campaigns can be personalized.
+- As an Analyst, I want self-serve dashboards so I don’t manually combine extracts.
+
+### 📍 Data Engineering
+- As a Data Engineer, I want a Bronze/Silver/Gold pipeline so that data improves in quality layer by layer.
+- As a QA Analyst, I want automated data checks so that data issues are caught early.
+
+### 📍 Experimentation & Decisions
+- As a Product Owner, I want A/B test results with p-values to validate if changes are statistically significant.
+- As an Executive, I want a one-page experiment summary so decisions are fast and confident.
