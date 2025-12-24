@@ -1,7 +1,0 @@
-CREATE TABLE gold.ab_customer_assignment (
-    customer_key BIGINT NOT NULL,
-    experiment_name VARCHAR(100) NOT NULL,
-    experiment_group CHAR(1) NOT NULL,   -- 'A' or 'B'
-    assigned_at DATE NOT NULL,
-    PRIMARY KEY (customer_key, experiment_name)
-);
