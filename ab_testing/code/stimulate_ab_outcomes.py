@@ -1,3 +1,74 @@
+"""
+===============================================================================
+A/B Test Outcome Simulation
+===============================================================================
+Purpose:
+    - To simulate 30-day retention and revenue outcomes for customers in an
+      active A/B test.
+    - To generate realistic experimental data when real campaign results are
+      not yet available.
+    - To populate the gold.ab_test_outcomes table for downstream analysis.
+
+Business Context:
+    - Customers have already been randomly assigned into:
+        • Group A (Control): No retention offer.
+        • Group B (Treatment): Receives a retention offer (e.g., discount or
+          personalized retention email).
+    - This script simulates how many customers in each group return to purchase
+      within 30 days and how much revenue they generate.
+
+Data Inputs (from the data warehouse):
+    - gold.ab_customer_assignment
+        • customer_key
+        • experiment_group (A or B)
+        • experiment_name (e.g., 'Retention_Offer_Test')
+
+Simulation Logic:
+    1. Read all customers assigned to the specified experiment from SQL Server.
+    2. For each customer, use group-specific retention probabilities:
+        • P_RETENTION_A for Control (A)
+        • P_RETENTION_B for Treatment (B)
+    3. For customers who "purchase" (simulated as a Bernoulli trial):
+        • Draw a revenue value from a normal distribution with configurable
+          mean (REV_MEAN) and standard deviation (REV_STD).
+        • Ensure revenue is never negative.
+    4. For non-purchasing customers:
+        • Set revenue_within_30d = 0.
+    5. Build a list of outcomes with:
+        • customer_key
+        • experiment_name
+        • purchase_within_30d (0/1)
+        • revenue_within_30d
+        • evaluated_at (today's date)
+    6. Upsert these outcomes into gold.ab_test_outcomes using a MERGE statement:
+        • Update existing rows for the same customer + experiment.
+        • Insert new rows when none exist.
+
+Key Parameters You Can Tune:
+    - P_RETENTION_A: Baseline retention probability for Control.
+    - P_RETENTION_B: Expected improved retention for Treatment.
+    - REV_MEAN / REV_STD: Revenue distribution for purchasing customers.
+    - Random seed (set in numpy) to make simulations reproducible.
+
+Python & Database Tools:
+    - numpy: Random number generation for purchases and revenue.
+    - pandas: Handling assignment data as a DataFrame.
+    - pyodbc: SQL Server connectivity and MERGE execution.
+    - datetime.date: To stamp evaluation date.
+
+Outputs:
+    - Records written (inserted/updated) into gold.ab_test_outcomes.
+    - Console message summarizing how many rows were processed.
+
+Usage:
+    - Run after ab_customer_assignment is populated:
+        python simulate_ab_outcomes.py
+
+    - Follow with statistical analysis in ab_significance.py to measure
+      retention lift and revenue impact for the experiment.
+===============================================================================
+"""
+
 import numpy as np
 import pandas as pd
 import pyodbc
