@@ -1,3 +1,61 @@
+"""
+===============================================================================
+A/B Test Significance Analysis
+===============================================================================
+Purpose:
+    - To evaluate the impact of a retention offer on at-risk customers.
+    - To compare 30-day retention and revenue between Control (A) and Treatment (B).
+    - To provide statistically valid evidence for or against rolling out the offer.
+
+Business Context:
+    - Customers are randomly assigned to:
+        • Group A (Control): No retention offer.
+        • Group B (Treatment): Receives a retention offer (e.g., email/incentive).
+    - We want to know if Group B performs better than Group A in a meaningful way.
+
+Data Inputs (from the data warehouse):
+    - gold.ab_customer_assignment
+        • experiment_group (A or B)
+        • experiment_name (e.g., 'Retention_Offer_Test')
+        • customer_key
+    - gold.ab_test_outcomes
+        • purchase_within_30d (0/1 flag for at least one purchase in 30 days)
+        • revenue_within_30d (monetary value in the 30-day window)
+
+Logic & Steps:
+    1. Read experiment data from SQL Server into a Pandas DataFrame.
+    2. Split data into:
+        • Group A (Control)
+        • Group B (Treatment)
+    3. Compute:
+        • Number of customers in each group.
+        • 30-day retention rate per group.
+        • Retention lift = (B - A) / A.
+    4. Perform statistical tests:
+        • Chi-square test on retention (purchase_within_30d) to check if differences
+          between A and B are statistically significant.
+        • Two-sample t-test on revenue_within_30d to compare average revenue.
+    5. Print a concise summary that can be copied into documentation or a memo.
+
+Key Python / Stats Libraries Used:
+    - pandas: Data loading and manipulation.
+    - pyodbc: SQL Server connectivity.
+    - scipy.stats:
+        • chi2_contingency: For retention rate significance.
+        • ttest_ind: For revenue difference significance.
+
+Outputs:
+    - Console summary including:
+        • Group sizes and retention rates.
+        • Retention lift (%).
+        • p-values for retention and revenue.
+    - These values are referenced in the A/B Test Results Memo and README.
+
+Usage:
+    - Run this script after assignment and outcome tables are populated:
+        python ab_significance.py
+===============================================================================
+"""
 import pandas as pd
 import pyodbc
 from scipy.stats import chi2_contingency, ttest_ind
