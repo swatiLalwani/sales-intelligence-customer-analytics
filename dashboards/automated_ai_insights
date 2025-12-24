@@ -1,0 +1,22 @@
+CREATE OR ALTER VIEW gold.v_ai_churn_input AS
+SELECT
+    customer_key,
+    country,
+    risk_status,
+    days_since_last_purchase,
+    lifetime_revenue,
+    lifetime_orders
+FROM gold.v_customer_churn_status
+WHERE risk_status IN ('AT_RISK', 'CHURNED');
+GO
+CREATE TABLE gold.customer_ai_insights (
+    customer_key BIGINT NOT NULL,
+    ai_explanation NVARCHAR(500) NULL,
+    ai_action NVARCHAR(300) NULL,
+    ai_confidence NVARCHAR(20) NULL,
+    generated_at DATETIME2 NULL,
+    PRIMARY KEY (customer_key)
+);
+SELECT TOP 10 *
+FROM gold.customer_ai_insights
+ORDER BY generated_at DESC;
