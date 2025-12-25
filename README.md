@@ -1,5 +1,5 @@
 **📊 Sales Intelligence & Customer Analytics**
-A customer analytics case study where insights lead to decisions — not just dashboards.
+A customer analytics case study where insights lead to decisions and not just dashboards.
 
 Data Analyst & Business Analyst Project – SQL • Power BI • Customer Insights • A/B Testing • Decision Support
 
