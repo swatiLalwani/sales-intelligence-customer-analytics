@@ -89,7 +89,6 @@ sales-intelligence-customer-analytics/
 ├── docs/                      # BRD, use cases, user stories (BA)
 └── README.md
 
-
 **🛠 Tools Used:**
 
 SQL Server → analysis logic, KPIs, experiment setup
