@@ -6,6 +6,7 @@ This project demonstrates how a Data Analyst / Business Analyst turns raw custom
 It focuses on customer value, churn prediction, retention strategy validation, and automated insight delivery and not building pipelines or engineering systems.
 
 **⭐ Business Outcome Summary**
+
 Using customer behavior analysis, churn modeling, and an A/B retention test:
 Retention improved by +35.3% in the offer group (B)
 p-value: 0.0006 → statistically significant
