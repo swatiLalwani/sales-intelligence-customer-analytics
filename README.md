@@ -1,117 +1,99 @@
-📊 Sales Intelligence & Customer Analytics
-(Data Analyst Portfolio Project – SQL • Power BI • A/B Testing • Insight Automation)
+**📊 Sales Intelligence & Customer Analytics**
 
-This project showcases how a Data Analyst supports business decision-making using customer data.
-It focuses on understanding behavior, identifying churn risk, testing retention strategies, and generating insights for action  and not building pipelines or engineering systems. 
+Data Analyst & Business Analyst Project – SQL • Power BI • Customer Insights • A/B Testing • Decision Support
 
-🎯Purpose of this Project:
-To help business teams answer:
-Who are our most valuable customers?
-Which customers are at risk and why?
-How much revenue could churn cost us?
-Does a retention offer measurably improve outcomes?
-What action should we take for each customer?
+This project demonstrates how a Data Analyst / Business Analyst turns raw customer activity into business decisions.
+It focuses on customer value, churn prediction, retention strategy validation, and automated insight delivery and not building pipelines or engineering systems.
 
-🧠 What This Project Includes:
-Category	What Was Done	Why It Matters
-Exploratory Analysis	Segments, value tiers, inactivity patterns	Understand user behavior & drivers
-Business KPIs	AOV, retention %, churn %, revenue at risk	Supports decision-making
-Dashboards	Customer Behavior + Churn & Retention	Present insights to stakeholders
-A/B Test	Measure retention offer impact with stats	Decide if investment is worth scaling
-Automated Insights	Rule-based explanations & actions	Empowers CRM / marketing to act
+**⭐ Business Outcome Summary**
+Using customer behavior analysis, churn modeling, and an A/B retention test:
+Retention improved by +35.3% in the offer group (B)
+p-value: 0.0006 → statistically significant
+Recommendation: Scale the offer to at-risk customers (90+ days inactive)
+Expected Impact: Prevent churn, recover revenue, and improve 30-day return rate
 
-📌 Dashboards (Power BI)
+**🎯 Project Purpose**
+
+To help business and product teams answer:
+| Business Question                           | Answered Through                       |
+| ------------------------------------------- | -------------------------------------- |
+| Who are our most valuable customers?        | Segmentation & LTV tiers               |
+| Which customers are at risk and why?        | Churn scoring + inactivity patterns    |
+| How much revenue could churn cost us?       | Revenue-at-risk analysis               |
+| Does an incentive actually change behavior? | A/B experiment w/ significance testing |
+| What action should we take next?            | Rule-based AI insights for CRM         |
+
+📈 **Dashboards (Power BI)**
+These dashboards were designed based on business questions and acceptance criteria, similar to how a BA collaborates with stakeholders.
+
 Customer Behavior Dashboard:
 Lifetime value tiers
 Repeat purchase behavior
-Revenue contribution by segment
-Customer engagement overview
+Revenue by segment
+Engagement overview
 📍 dashboards/Customer Behavior dashboard.pbix
-📸 [dashboards/screenshots/customer behavior.png](https://github.com/swatiLalwani/sales-intelligence-customer-analytics/blob/main/dashboards/screenshots/customer%20behavior.png)
+📸 [[dashboards/screenshots/customer behavior.png](https://github.com/swatiLalwani/sales-intelligence-customer-analytics/blob/main/dashboards/screenshots/customer%20behavior.png)
 
 Churn & Retention Dashboard:
-Churn rate / retention rate
-Inactive customer groups
+Churn vs retention %
+At-risk customers
 Revenue at risk
 Days since last purchase
 📍 dashboards/Customer churn dashboard.pbix
 📸 [dashboards/screenshots/customer churn.png](https://github.com/swatiLalwani/sales-intelligence-customer-analytics/blob/main/dashboards/screenshots/customer%20churn.png)
 
-🧪 A/B Testing for Retention Impact
-| Step                           | File                                      |
-| ------------------------------ | ----------------------------------------- |
-| Assign control vs offer groups | `/ab_testing/sql/random_assignment.sql`   |
-| Simulate or load results       | `/ab_testing/simulate_ab_outcomes.py`     |
-| Validate experiment health     | `/ab_testing/sql/validate_assignment.sql` |
-| Statistical significance test  | `/ab_testing/code/ab_significance.py`     |
+**🧪 A/B Test – Retention Offer Impact:**
+| Step                     | File                                      |
+| ------------------------ | ----------------------------------------- |
+| Assign groups            | `/ab_testing/sql/random_assignment.sql`   |
+| Load or simulate results | `/ab_testing/simulate_ab_outcomes.py`     |
+| Validate experiment      | `/ab_testing/sql/validate_assignment.sql` |
+| Statistical test         | `/ab_testing/code/ab_significance.py`     |
 
-🧪 Experiment Result:
+Results:
 Group A Retention: 17.6%
 Group B Retention: 23.8%
-Retention Lift: +35.3% improvement in Group B
-p-value: 0.0006 (well below 0.05 threshold)
+Lift: +35.3% improvement
+p-value: 0.0006 → Significant
 
-📊 Interpretation:
-The retention offer significantly improved outcomes. Customers who received the offer (Group B) returned at a 35.3% higher rate than those who did not.
-Since the p-value is 0.0006, this difference is statistically significant, meaning it is unlikely due to chance and reflects a real effect.
+Decision Recommendation:
+➡️ Scale incentive to customers inactive 90+ days
+➡️ Send personalized offer + follow-up touchpoint
+➡️ Monitor revenue impact over next 30 days
 
-📍 Business Impact:
-If rolled out at scale, this strategy is expected to:
-Reactivate more inactive customers
-Reduce churn rate
-Recover revenue that would have been lost
-Improve 30-day customer return performance
+**🤖 Automated Insight Generation:**
+A lightweight rules engine creates CRM-ready insights:
+Why at risk
+Recommended action
+Confidence level
 
-✅ Recommendation (Final):
-Scale the retention offer to the broader at-risk segment.
-Prioritize customers inactive 90+ days with:
-Personalized email / SMS offer
-Time-bound incentive
-Follow-up to measure repeat behavior
+| Insight Task         | File                        |
+| -------------------- | --------------------------- |
+| Generate insights    | `ai_insights.py`            |
+| Insert/Update to SQL | `upsert_ai_insights.py`     |
+| Power BI Input View  | `automated_ai_insights.sql` |
 
+Output:
+"Customer is AT_RISK due to 180+ days inactivity and low repeat history. Recommend reactivation offer. Confidence: High."
 
-🤖 AI Insight Automation 
-A lightweight rules engine generates recommendations such as:
-Reason: 180+ days inactivity, low repeat orders
-Action: Send reactivation offer / incentive
-Confidence: High
-
-| Insight Task          | File                        |
-| --------------------- | --------------------------- |
-| Generate insights     | `ai_insights.py`            |
-| Save to table         | `upsert_ai_insights.py`     |
-| View used by Power BI | `automated_ai_insights.sql` |
-
-
-📂 Repository Structure
+**📂 Repository Structure:**
 sales-intelligence-customer-analytics/
 │
-├── datasets/                        # Source CRM/ERP data (CSV)
-├── analytics/                       # SQL for analysis, KPIs, insights
-│   ├── churn_analysis.sql
-│   ├── customer_value_segments.sql
-│   ├── revenue_at_risk.sql
-│
-├── dashboards/                      # Power BI reports + screenshots
-│
-├── ab_testing/                      # A/B assignment → results → significance
-│   ├── sql/
-│   ├── code/
-│
-├── ai_insights/                     # Insight generation & upload
-│   ├── ai_insights.py
-│   ├── upsert_ai_insights.py
-│
-├── docs/                            # BRD, use cases, user stories
-│
+├── datasets/                  # CRM & ERP input data
+├── analytics/                 # KPI logic, churn, segmentation, risk
+├── dashboards/                # Power BI reports & screenshots
+├── ab_testing/                # Experiment setup, outcomes & significance
+├── ai_insights/               # Automated recommendations
+├── docs/                      # BRD, use cases, user stories (BA)
 └── README.md
 
-🛠️ Tools Used
-SQL Server → analysis queries & logic
-Power BI → stakeholder reporting
-Python → automated insights & data updates
-A/B Testing → decision validation
+**🛠 Tools Used:**
+SQL Server → analysis logic, KPIs, experiment setup
+Power BI → dashboarding & decision reporting
+Python → A/B results, insight generation, export to CSV/SQL
+BA Documentation → BRD • Use Cases • User Stories • Acceptance Criteria
 
-📩 Contact
-If you'd like a walkthrough or want to discuss this project for a role, feel free to reach out.
-
+**📩 Contact:**
+If you'd like a walkthrough or want to discuss the project for a role:
+📧 swati.lalwani1214@gmail.com
+🔗 LinkedIn available on request
