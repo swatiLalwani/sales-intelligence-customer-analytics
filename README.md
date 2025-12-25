@@ -79,15 +79,7 @@ Output:
 
 **📂 Repository Structure:**
 
-sales-intelligence-customer-analytics/
-│
-├── datasets/                  # CRM & ERP input data
-├── analytics/                 # KPI logic, churn, segmentation, risk
-├── dashboards/                # Power BI reports & screenshots
-├── ab_testing/                # Experiment setup, outcomes & significance
-├── ai_insights/               # Automated recommendations
-├── docs/                      # BRD, use cases, user stories (BA)
-└── README.md
+sales-intelligence-customer-analytics/ │ ├── datasets/ # Source CRM/ERP data (CSV) ├── analytics/ # SQL for analysis, KPIs, insights │ ├── churn_analysis.sql │ ├── customer_value_segments.sql │ ├── revenue_at_risk.sql │ ├── dashboards/ # Power BI reports + screenshots │ ├── ab_testing/ # A/B assignment → results → significance │ ├── sql/ │ ├── code/ │ ├── ai_insights/ # Insight generation & upload │ ├── ai_insights.py │ ├── upsert_ai_insights.py │ ├── docs/ # BRD, use cases, user stories │ └── README.md
 
 **🛠 Tools Used:**
 SQL Server → analysis logic, KPIs, experiment setup
