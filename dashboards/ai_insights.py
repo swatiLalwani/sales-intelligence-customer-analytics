@@ -1,3 +1,55 @@
+"""
+===============================================================================
+Customer AI Insights Generator
+===============================================================================
+Purpose:
+    - To generate explainable, rule-based "AI-like" insights for customers
+      flagged as AT_RISK or CHURNED in the data warehouse.
+    - Produces human-readable explanations, recommended actions, and confidence
+      scores that can be embedded into dashboards, CRM systems, or retention
+      campaign workflows.
+
+Business Context:
+    - Supports churn prevention, retention strategies, and CRM outreach.
+    - Helps analysts interpret WHY a customer is at risk and WHAT action to take.
+    - Acts as an "offline AI engine" when real LLM/API integration is not used.
+
+Data Source:
+    View: gold.v_ai_churn_input
+    Key fields pulled:
+        • customer_key
+        • risk_status
+        • days_since_last_purchase
+        • lifetime_orders
+        • lifetime_revenue
+        • country
+
+Logic Overview:
+    1. Fetch customers from the gold churn input view.
+    2. Apply heuristic rules to detect risk drivers such as:
+        - High inactivity (90–180+ days)
+        - Low order count / low engagement
+        - Low or high lifetime value ranges
+    3. For each customer, generate:
+        • ai_explanation: Why the customer is at risk
+        • ai_action: Suggested retention step
+        • ai_confidence: "High", "Medium", or "Low"
+    4. Save output to a CSV file for reporting or upsert into SQL.
+
+Use Cases:
+    - Embed insights on Power BI tooltip pages
+    - Feed recommendations to CRM teams
+    - Support retention email triggers
+    - Provide narrative to exec dashboards
+
+Technical Details:
+    - Python: pandas, pyodbc
+    - Database: SQL Server (ODBC Driver 17)
+    - Output Format: customer_ai_insights.csv
+    - Deterministic rule-based system (no model training required)
+===============================================================================
+"""
+
 import pandas as pd
 import pyodbc
 from datetime import datetime
