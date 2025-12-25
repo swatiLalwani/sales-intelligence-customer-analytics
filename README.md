@@ -33,6 +33,12 @@ Lifetime value tiers
 Repeat purchase behavior
 Revenue by segment
 Engagement overview
+
+Used by: Marketing & CRM Teams
+Supports decisions like:
+Which customer segments should receive targeted upsell or reactivation campaigns?
+Where should the company focus to grow high-value, repeat-purchase customers?
+
 📍 dashboards/Customer Behavior dashboard.pbix
 📸 [[dashboards/screenshots/customer behavior.png](https://github.com/swatiLalwani/sales-intelligence-customer-analytics/blob/main/dashboards/screenshots/customer%20behavior.png)
 
@@ -41,6 +47,11 @@ Churn vs retention %
 At-risk customers
 Revenue at risk
 Days since last purchase
+
+Used by: Customer Success & Retention Teams
+Supports decisions like:
+Which customers to re-engage immediately based on inactivity?
+How much revenue is currently at risk if no action is taken?
 📍 dashboards/Customer churn dashboard.pbix
 📸 [dashboards/screenshots/customer churn.png](https://github.com/swatiLalwani/sales-intelligence-customer-analytics/blob/main/dashboards/screenshots/customer%20churn.png)
 
@@ -78,6 +89,14 @@ Confidence level
 Output:
 "Customer is AT_RISK due to 180+ days inactivity and low repeat history. Recommend reactivation offer. Confidence: High."
 
+
+**📌 How This Project Drives Decisions (Before vs After Impact)**
+| Stage               | Business State                                                                                                                                                                                |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Before Analysis** | No visibility into which customers were most at risk, no data-backed criteria for incentive targeting, and decisions based on assumptions rather than performance.                            |
+| **After Analysis**  | Identified high-risk segments, quantified churn drivers, and validated that a retention offer improved return rate by **+35.3% (p=0.0006)** — enabling a confident, data-backed rollout plan. |
+
+
 **📂 Repository Structure:**
 
 sales-intelligence-customer-analytics/
@@ -96,6 +115,14 @@ SQL Server → analysis logic, KPIs, experiment setup
 Power BI → dashboarding & decision reporting
 Python → A/B results, insight generation, export to CSV/SQL
 BA Documentation → BRD • Use Cases • User Stories • Acceptance Criteria
+
+**⚠️ Data Assumptions & Limitations: **
+To maintain transparency in decision-making, the following assumptions were applied:
+30-day return was used as a proxy for retention; longer-term behavior may differ.
+The offer strategy was tested only on at-risk customers (90+ days inactive).
+Revenue impact was measured at the order level; customer lifetime value forecasting was not included.
+📌 Next Step if implemented:
+Extend evaluation to 60–120 day periods and measure contribution to long-term LTV and net revenue retention.
 
 **📩 Contact:**
 If you'd like a walkthrough or want to discuss the project for a role:
