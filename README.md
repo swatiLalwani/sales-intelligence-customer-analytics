@@ -1,4 +1,5 @@
 **📊 Sales Intelligence & Customer Analytics**
+A customer analytics case study where insights lead to decisions — not just dashboards.
 
 Data Analyst & Business Analyst Project – SQL • Power BI • Customer Insights • A/B Testing • Decision Support
 
@@ -51,11 +52,11 @@ Days since last purchase
 | Validate experiment      | `/ab_testing/sql/validate_assignment.sql` |
 | Statistical test         | `/ab_testing/code/ab_significance.py`     |
 
-Results:
-Group A Retention: 17.6%
-Group B Retention: 23.8%
-Lift: +35.3% improvement
-p-value: 0.0006 → Significant
+A/B Result:
+📈 +35.3% improvement in 30-day retention
+🧪 p = 0.0006 (statistically significant)
+💡 Decision: Roll out retention offer to at-risk customers
+💵 Outcome: Prevents churn & protects recurring revenue
 
 Decision Recommendation:
 ➡️ Scale incentive to customers inactive 90+ days
