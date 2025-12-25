@@ -25,7 +25,7 @@ To help business and product teams answer:
 | What action should we take next?            | Rule-based AI insights for CRM         |
 
 📈 **Dashboards (Power BI)**
-These dashboards were designed based on business questions and acceptance criteria, similar to how a BA collaborates with stakeholders.
+These dashboards were designed based on business questions and acceptance criteria.
 
 Customer Behavior Dashboard:
 Lifetime value tiers
@@ -78,6 +78,7 @@ Output:
 "Customer is AT_RISK due to 180+ days inactivity and low repeat history. Recommend reactivation offer. Confidence: High."
 
 **📂 Repository Structure:**
+
 sales-intelligence-customer-analytics/
 │
 ├── datasets/                  # CRM & ERP input data
